@@ -20,12 +20,12 @@ def faseI(A, b):
                 for indice in indices_basicas:  # Verificamos si alguna variable básica es artificial
                     if indice in indices_inventadas:
                         print("No se cumple la condición de factibilidad") 
-            print(r, z, A, b, q, p)
+            
             return
         else:
             q = negativos[0]  # Se elige la primera variable negativa siguiendo la regla de Bland
 
-        q = np.array([q])  
+        q = int(np.array([q]))
         Aq = A_fase_1[:, q]  # Tomamos la columna q de A_fase_1
 
         db = -B_inv @ Aq  
@@ -39,8 +39,10 @@ def faseI(A, b):
             # stop
 
         # Calcular pretheta solo con valores donde db_min < 0
-        valid_indices = db_min < 0  # Filtramos solo los valores negativos de db_min
-        pretheta = -Xb[valid_indices] / db_min[valid_indices]  
+        valid_indices = db_min < 0  # Filtramos solo los valores negativos
+        pretheta=np.empty(0)
+        for i in range(m):
+            pretheta=np.insert(pretheta,i,-Xb[i]/db_min[i])
         # Si no hay valores válidos, el problema es no acotado
         if pretheta.size == 0:
             print('(PL) no acotado')
@@ -83,7 +85,10 @@ def faseI(A, b):
 
         if np.allclose(Xb_actual, Xb_actual_2) and np.isclose(z_actual, z_actual_actualizacion) and z_actual_actualizacion < z:
             print(".")
+            print(cb)
             aux_faseI(B, An, cb, cn, z_actual, Xb_actual, indices_basicas, indices_no_basicas_sort)
+        else:
+            print("no entra")
 
 
     m, n = len(A), len(A[0])  # Número de restricciones y variables
@@ -139,7 +144,7 @@ c = np.array([44,18,60,27,-79,-51,92,-78,-69,-35,26,-56,-10,-55,0,0,0,0,0,0])
 #términos independientes de las restricciones
 b = np.array([64, 537, 55, 292, 1017, 6, 441, 312, 381, 398])
 
-print(faseI(A,b))
+faseI(A,b)
 
 
 

@@ -39,7 +39,7 @@ def faseI(A, b):
             # stop
 
         # Calcular pretheta solo con valores donde db_min < 0
-        valid_indices = db_min < 0  # Filtramos solo los valores negativos
+        
         pretheta=np.empty(0)
         for i in range(m):
             pretheta=np.insert(pretheta,i,-Xb[i]/db_min[i])
@@ -47,8 +47,8 @@ def faseI(A, b):
         if pretheta.size == 0:
             print('(PL) no acotado')
         else:
-            theta_num = float(np.min(pretheta))  # Mínimo de pretheta
-            theta_index = np.argmin(pretheta)  # Índice del mínimo en pretheta
+            theta_num = float(np.min(pretheta))  # Mínimo de theta
+            theta_index = np.argmin(pretheta)  # Índice del mínimo en theta
 
             p = int(theta_index)  
         
@@ -84,10 +84,14 @@ def faseI(A, b):
         z_actual = np.dot(cb, Xb_actual_2)
 
         if np.allclose(Xb_actual, Xb_actual_2) and np.isclose(z_actual, z_actual_actualizacion) and z_actual_actualizacion < z:
-            print(".")
-            print(cb)
+            print(Xb_actual, Xb_actual_2)
+            print(z_actual, z_actual_actualizacion)
+            print(z_actual_actualizacion < z)
             aux_faseI(B, An, cb, cn, z_actual, Xb_actual, indices_basicas, indices_no_basicas_sort)
         else:
+            print(Xb_actual, Xb_actual_2)
+            print(z_actual, z_actual_actualizacion)
+            print(z_actual_actualizacion < z)
             print("no entra")
 
 
@@ -121,7 +125,7 @@ def faseI(A, b):
 
     # Verificar si es una SBF
     if np.all(Xb >= 0):
-        aux_faseI(B, An, cb, cn, z, Xb, indices_basicas, indices_no_basicas)
+        return aux_faseI(B, An, cb, cn, z, Xb, indices_basicas, indices_no_basicas)
     else:
         print("No es una SBF")
         return

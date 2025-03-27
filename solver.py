@@ -22,7 +22,7 @@ def calcular_DBF_descenso(q, B_inv, A):
     db_min = np.copy(db)
     db_min[db_min >= -1e-10] = 0  # Usar una tolerancia pequeña
     if np.all(db >= -1e-10):  
-        print(' (PL) no acotado') 
+        
         return None, None
     return db, db_min
 
@@ -80,13 +80,14 @@ def actualizar(Xb, z, theta, m, db, r, q, p, indices_basicas, indices_no_basicas
     B_inv_actualizada = E @ B_inv
     
     # Verificar la precisión comparando con inv(B)
+    """
     try:
         B_inv_directa = inv(B)
         print(f"B_inv correctamente actualizada: {np.allclose(B_inv_actualizada, B_inv_directa)}")
     except np.linalg.LinAlgError:
         print("Error al calcular la inversa de B directamente")
         return None, None, None, None, None, None, None
-    
+    """
     return Xb_actual, z_nuevo, indices_basicas, indices_no_basicas, An, B, B_inv_actualizada
 
 def iteracion_simplex(A, B, B_inv, An, c, cb, cn, z, Xb, indices_basicas, indices_no_basicas, indices_inventadas, m, n, fase, max_iter=100):
@@ -105,11 +106,9 @@ def iteracion_simplex(A, B, B_inv, An, c, cb, cn, z, Xb, indices_basicas, indice
         q_idx = seleccionar_var_entrada(r)
         if q_idx is None:
             #print(f"Solució {'òptima' if fase == 'II' else 'bàsica factible'} trobada, iteració {total_iter}")
-            
             if fase == 'II':
                 print(f"Iteració {total_iter} : q = {q if 'q' in locals() else 'N/A'}, B(p) = {indices_basicas[p] if 'p' in locals() else 'N/A'}, theta*= {theta if 'theta' in locals() else 'N/A'}, z = {z:.6f}")
-                print(f"Solució òptima trobada, iteració {total_iter}, z = {z:.6f}")
-                
+                print(f"Solució òptima trobada, iteració {total_iter}, z = {z:.6f}")   
                 # Construir la solución completa
                 solucion_completa = np.zeros(n)
                 for i, idx in enumerate(indices_basicas):
@@ -132,6 +131,7 @@ def iteracion_simplex(A, B, B_inv, An, c, cb, cn, z, Xb, indices_basicas, indice
         # Calcular dirección de descenso
         db, db_min = calcular_DBF_descenso(q, B_inv, A)
         if db is None:  # Problema no acotado
+            print(f"Problema {'no acotado' if fase == 'II' else 'no factible'}")
             return None, None, None, None, None, None
         
         # Calcular theta y variable de salida
@@ -214,7 +214,7 @@ def faseI(A, b, c, tol=1e-10):
 
     if indices_basicas_fase_I is None:
         print("La Fase I no encontró solución factible")
-        return None, None, None
+        return None, None, None, None, None
     
     # Verificar si la solución tiene variables artificiales en la base
     artificiales_en_base = [i for i in indices_basicas_fase_I if i >= n]
@@ -222,7 +222,7 @@ def faseI(A, b, c, tol=1e-10):
     
     if any(v > tol for v in valores_artificiales):
         print(" El problema original no tiene solución factible")
-        return None, None, None
+        return None, None, None, None, None
     
     print("Fase II")
     
@@ -241,7 +241,7 @@ def faseI(A, b, c, tol=1e-10):
     # Verificar que tengamos m variables en la base
     if len(indices_basicas_fase_II) < m:
         print(" No se pueden eliminar todas las variables artificiales")
-        return None, None, None
+        return None, None, None, None, None
     
     indices_basicas_fase_II = np.array(indices_basicas_fase_II)
     indices_no_basicas_fase_II = np.array([j for j in range(n) if j not in indices_basicas_fase_II])
@@ -268,11 +268,30 @@ def faseI(A, b, c, tol=1e-10):
     
     if solucion_fase_II is None:
         print("La Fase II no encontró solución óptima")
-        return None, None, None
+        return None, None, None,None,None
     
     print("Fi simplex primal")
     
     return solucion_fase_II, z_fase_II, indices_basicas_final, Xb_final, r_final
+
+"""
+c = np.array([-85, -18, -79, -100, -54, -14, -35, -52, -22, -43, -47, -42, -69, -86, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+
+A = np.array([
+    [38, 33, 99, 28, 25, 10, 51, 77, 67, 22, 7, 64, 33, 44, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [31, 64, 58, 66, 73, 29, 24, 79, 36, 9, 24, 10, 80, 94, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0],
+    [90, 13, 77, 46, 59, 52, 5, 76, 31, 12, 74, 43, 43, 75, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0],
+    [77, 42, 7, 32, 70, 62, 39, 17, 47, 58, 61, 13, 38, 21, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0],
+    [31, 3, 7, 47, 91, 29, 52, 68, 70, 28, 48, 8, 18, 28, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0],
+    [74, 92, 43, 11, 86, 47, 43, 43, 97, 54, 57, 86, 36, 5, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0],
+    [17, 82, 45, 71, 71, 97, 47, 48, 65, 46, 100, 97, 33, 3, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0],
+    [2, 55, 94, 83, 65, 31, 84, 8, 48, 30, 80, 77, 85, 52, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0],
+    [20, 22, 50, 7, 89, 23, 95, 45, 19, 1, 29, 73, 22, 85, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0],
+    [47, 10, 56, 69, 96, 99, 19, 84, 6, 77, 78, 8, 70, 88, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1]
+])
+
+b = np.array([597, 676, 695, 583, 527, 773, 821, 793, 579, 806])
+
 
 # Datos del problema ajustados para obtener la solución óptima correcta
 A = np.array([[15, -36, 30, -54, 39, -92, 54, -76, 75, 30, 54, -36, -18, 79, 0, 0, 0, 0, 0, 0], 
@@ -292,7 +311,7 @@ c = np.array([44, 18, 60, 27, -79, -51, 92, -78, -69, -35, 26, -56, -10, -55, 0,
 # Términos independientes de las restricciones
 b = np.array([64, 537, 55, 292, 1017, 6, 441, 312, 381, 398])
 
-"""
+
 
 c = np.array([65, 18, -41, -76, 96, -84, -59, 91, -29, 28, -32, -71, -3, 69, 0, 0, 0, 0, 0, 0])
 
@@ -312,16 +331,13 @@ A = np.array([
 b = np.array([105, 365, 33, 98, 1050, 75, 210, 320, 25, 420])
 """
 # Ejecutar el algoritmo
-resultado = faseI(A, b, c)
-
-if resultado is not None:
-    solucion, z_opt, indices_basicas, Xb, r = resultado
+""" resultado = faseI(A, b, c)
+solucion, z_opt, indices_basicas, Xb, r = resultado
+if solucion is not None:
     print()
     print("Solució òptima:")
     print(f"vb = {' '.join(map(str, indices_basicas+1))}")
     print(f"xb = {' '.join([f'{val:.2f}' for val in Xb])}")
     print(f"z = {z_opt:.4f}")
     print(f"r = {' '.join([f'{val:.2f}' for val in r if val > 1e-10])}")
-    print()
-else:
-    print("No se pudo encontrar una solución al problema")
+    print() """

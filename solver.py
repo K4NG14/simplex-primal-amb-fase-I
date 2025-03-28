@@ -19,10 +19,8 @@ def calcular_DBF_descenso(q, B_inv, A):
     """Calcular dB y comprobar que DBF de descenso es acotada"""
     Aq = A[:, q] 
     db = -B_inv @ Aq  
-    db_min = np.copy(db)
-    db_min[db_min >= -1e-10] = 0  # Usar una tolerancia pequeña
+    db_min = np.copy(db) 
     if np.all(db >= -1e-10):  
-        
         return None, None
     return db, db_min
 

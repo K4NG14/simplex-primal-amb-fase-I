@@ -102,8 +102,10 @@ def iteracion_simplex(A, B, B_inv, An, c, cb, cn, z, Xb, indices_basicas, indice
         q_idx = seleccionar_var_entrada(r)
         if q_idx is None:
             #print(f"Solució {'òptima' if fase == 'II' else 'bàsica factible'} trobada, iteració {total_iter}")
+            total_iter += 1
+            print(f"Iteració {total_iter} : z = {z:.6f}")
+
             if fase == 'II':
-                print(f"Iteració {total_iter} : q = {q if 'q' in locals() else 'N/A'}, B(p) = {indices_basicas[p] if 'p' in locals() else 'N/A'}, theta*= {theta if 'theta' in locals() else 'N/A'}, z = {z:.6f}")
                 print(f"Solució òptima trobada, iteració {total_iter}, z = {z:.6f}")   
                 # Construir la solución completa
                 solucion_completa = np.zeros(n)
@@ -119,7 +121,6 @@ def iteracion_simplex(A, B, B_inv, An, c, cb, cn, z, Xb, indices_basicas, indice
                 
                 return solucion_completa, z, indices_basicas, Xb, r_final, total_iter
             else:
-                print(f"Iteració {total_iter} : q = {q if 'q' in locals() else 'N/A'}, B(p) = {indices_basicas[p] if 'p' in locals() else 'N/A'}, theta*= {theta if 'theta' in locals() else 'N/A'}, z = {z:.6f}")
                 return indices_basicas, Xb, z, total_iter
         
         q = indices_no_basicas[q_idx]
@@ -156,9 +157,9 @@ def iteracion_simplex(A, B, B_inv, An, c, cb, cn, z, Xb, indices_basicas, indice
     return None, None, None, None, None, None
 
 
-def faseI(A, b, c, tol=1e-10):
+def simplex(A, b, c, tol=1e-10):
     """
-    Fase I del método simplex para encontrar una solución básica factible inicial.
+    Fase I y Fase II del método simplex para encontrar una solución básica factible inicial (en la Fase I) y la solución óptima (en la Fase II).
     """
     m, n = A.shape  # Número de restricciones y variables
     globals()['total_iteraciones'] = 0

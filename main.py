@@ -16,7 +16,6 @@ def parse_file(file_path, alumno_num):
     return alumno_content
 
 def c_unir_cols(text):
-    print(text)
     col1_start = text.find('Column')
     col2_start = text.find('Column', col1_start + 1)
     if col1_start != -1:
@@ -120,7 +119,7 @@ for i, problem in parsed_problems.items():
     A = problem['A']
     b = problem['b']
     c = problem['c']
-    resultado = faseI(A, b, c)
+    resultado = simplex(A, b, c)
     solucion, z_opt, indices_basicas, Xb, r = resultado
     if solucion is not None:
         print()

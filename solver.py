@@ -26,8 +26,7 @@ def calcular_DBF_descenso(q, B_inv, A):
 
 def calcular_theta_y_var_salida(Xb, db_min):
     """Calcular theta y p para elegir la variable de salida"""
-    # Usar una tolerancia para valores cercanos a cero
-    pretheta = np.where(db_min < -1e-10, -Xb / db_min, np.inf)
+    pretheta = np.where(db_min < -1e-10, -Xb / db_min, np.inf) # Usar una tolerancia para valores cercanos a cero
     if np.all(pretheta == np.inf):
         return 0, 0  # Caso especial: ninguna restricción limita
     theta = np.min(pretheta)
@@ -63,8 +62,7 @@ def actualizar(Xb, z, theta, m, db, r, q, p, indices_basicas, indices_no_basicas
         return None, None, None, None, None, None, None
     
     # Actualizar z
-    z_nuevo = float(z) + r * theta
-    
+    z_nuevo = float(z) + r * theta    
     # Calcular y_k = B_inv * a_k (columna que entra)
     a_k = A[:, q]
     y_k = B_inv @ a_k
@@ -151,8 +149,7 @@ def iteracion_simplex(A, B, B_inv, An, c, cb, cn, z, Xb, indices_basicas, indice
         
         # Actualizar cb y cn para la siguiente iteración
         cb = c[indices_basicas]
-        cn = c[indices_no_basicas]
-        
+        cn = c[indices_no_basicas]        
         iter_count += 1
     
     print(f"Se alcanzó el límite máximo de {max_iter} iteraciones sin convergencia")

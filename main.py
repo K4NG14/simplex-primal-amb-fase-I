@@ -99,74 +99,61 @@ def parse_simplex_problems(input_text):
 
 #::  OPT/GIA/FIB Curso 2022-23 : alumno 10 ::
 #::  OPT/GIA/FIB Curso 2022-23 : alumno  9 ::
-#alumno_num = input("Introduce el número de alumno: ")
-for alumno_num in range(1, 66):
-    alumno_num = str(alumno_num)
-    if len(alumno_num) == 1:
-        alumno_num = f" {alumno_num}"
-    file_path = 'datos.txt'
-    result = parse_file(file_path, alumno_num)
+alumno_num = input("Introduce el número de alumno: ")
+if len(alumno_num) == 1:
+    alumno_num = f" {alumno_num}"
+file_path = 'datos.txt'
+result = parse_file(file_path, alumno_num)
 
-    if result is None:
-        print("Alumno no encontrado")
-        exit() 
+if result is None:
+    print("Alumno no encontrado")
+    exit() 
 
-    parsed_problems = parse_simplex_problems(result)
-    for i, problem in parsed_problems.items():
-        print(f"Problema {i}:")
-        """ print(f"A: {problem['A']}")
-        print(f"b: {problem['b']}")
-        print(f"c: {problem['c']}")
-        print(f"z: {problem['z']}")
-        print(f"vb: {problem['vb']}") """
-        A = problem['A']
-        b = problem['b']
-        c = problem['c']
-        resultado = faseI(A, b, c)
-        solucion, z_opt, indices_basicas, Xb, r = resultado
-        if solucion is not None:
-            print()
-            print("Solució òptima:")
-            print(f"vb = {' '.join(map(str, indices_basicas+1))}")
-            print(f"xb = {' '.join([f'{val:.2f}' for val in Xb])}")
-            print(f"z = {z_opt:.4f}" if problem['z'] is None else f"z = {z_opt:.4f}, z* = {problem['z']}")
-            print(f"r = {' '.join([f'{val:.2f}' for val in r if val > 1e-10])}")
-            print()
-            with open("solucion.txt", "a") as f:
-                f.write("\n")
-                f.write(f"Conjunt de dades {alumno_num}, problema {i}\n")
-                f.write("Solucio optima:\n")
-                f.write(f"vb = {' '.join(map(str, indices_basicas+1))}\n")
-                f.write(f"xb = {' '.join([f'{val:.2f}' for val in Xb])}\n")
-                f.write(f"z = {z_opt:.4f}\n" if problem['z'] is None else f"z = {z_opt:.4f}, z* = {problem['z']}\n")
-                f.write(f"r = {' '.join([f'{val:.2f}' for val in r if val > 1e-10])}\n")
-                f.write("\n")
-
-                    
-
-
-
-            """
-            for i in range(1, 66):
-                i = str(i)
-                if len(i) == 1:
-                    i = f" {i}"
-                print(f"Alumno {i}:")
-                result = parse_file('datos.txt', i)
-                if result is None:
-                    print("Alumno no encontrado")
-                    continue
-                parsed_problems = parse_simplex_problems(result)
-                for x, problem in parsed_problems.items():
-                    print(f"Problema {x}:")
-                    print(f"A: {problem['A']}")
-                    print(f"b: {problem['b']}")
-                    print(f"c: {problem['c']}")
-                    print(f"z: {problem['z']}")
-                    print(f"vb: {problem['vb']}")
-                    print() 
-                    pass
-            """
+parsed_problems = parse_simplex_problems(result)
+for i, problem in parsed_problems.items():
+    print(f"Problema {i}:")
+    """ print(f"A: {problem['A']}")
+    print(f"b: {problem['b']}")
+    print(f"c: {problem['c']}")
+    print(f"z: {problem['z']}")
+    print(f"vb: {problem['vb']}") """
+    A = problem['A']
+    b = problem['b']
+    c = problem['c']
+    resultado = faseI(A, b, c)
+    solucion, z_opt, indices_basicas, Xb, r = resultado
+    if solucion is not None:
+        print()
+        print("Solució òptima:")
+        print(f"vb = {' '.join(map(str, indices_basicas+1))}")
+        print(f"xb = {' '.join([f'{val:.2f}' for val in Xb])}")
+        print(f"z = {z_opt:.4f}" if problem['z'] is None else f"z = {z_opt:.4f}, z* = {problem['z']}")
+        print(f"r = {' '.join([f'{val:.2f}' for val in r if val > 1e-10])}")
+        print()
     
+
+
+
+        """
+        for i in range(1, 66):
+            i = str(i)
+            if len(i) == 1:
+                i = f" {i}"
+            print(f"Alumno {i}:")
+            result = parse_file('datos.txt', i)
+            if result is None:
+                print("Alumno no encontrado")
+                continue
+            parsed_problems = parse_simplex_problems(result)
+            for x, problem in parsed_problems.items():
+                print(f"Problema {x}:")
+                print(f"A: {problem['A']}")
+                print(f"b: {problem['b']}")
+                print(f"c: {problem['c']}")
+                print(f"z: {problem['z']}")
+                print(f"vb: {problem['vb']}")
+                print() 
+                pass
+        """
 
 

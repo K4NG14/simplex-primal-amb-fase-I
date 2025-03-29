@@ -23,12 +23,10 @@ def c_unir_cols(text):
         col_space = text.find('\n', col1_start + 1)
         col1_end = col2_start if col2_start != -1 else len(text)-1
         col1 = text[col_space:col1_end].strip()
-        print(col1)
     if col2_start != -1:
         col_space = text.find('\n', col2_start + 1)
         col2_end = len(text)
         col2 = text[col_space:col2_end].strip()
-        print(col2)
         col1 = np.fromstring(col1, sep=" ")
         col2 = np.fromstring(col2, sep=" ")
         

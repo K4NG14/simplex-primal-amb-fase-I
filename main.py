@@ -1,6 +1,7 @@
 import numpy as np
 import re
 from solver import *
+import os
 def parse_file(file_path, alumno_num):
     with open(file_path, 'r') as file:
         content = file.read()
@@ -101,7 +102,7 @@ def parse_simplex_problems(input_text):
 alumno_num = input("Introduce el número de alumno: ")
 if len(alumno_num) == 1:
     alumno_num = f" {alumno_num}"
-file_path = 'datos.txt'
+file_path = os.path.join(os.path.dirname(__file__), 'datos.txt')
 result = parse_file(file_path, alumno_num)
 
 if result is None:

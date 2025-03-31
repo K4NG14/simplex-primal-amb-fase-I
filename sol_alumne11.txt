@@ -1,0 +1,149 @@
+Introduce el número de alumno: 11
+Problema 1:
+Inici simplex primal amb regla de Bland
+Fase I
+Iteració 1 : q = 0, B(p) = 28, theta*= 0.263, z = 2701.000000
+Iteració 2 : q = 1, B(p) = 25, theta*= 0.805, z = 2639.684211
+Iteració 3 : q = 2, B(p) = 1, theta*= 0.803, z = 2463.589804
+Iteració 4 : q = 3, B(p) = 2, theta*= 0.637, z = 2387.957420
+Iteració 5 : q = 4, B(p) = 27, theta*= 1.201, z = 2321.801422
+Iteració 6 : q = 1, B(p) = 3, theta*= 1.288, z = 1506.264573
+Iteració 7 : q = 5, B(p) = 20, theta*= 0.712, z = 1259.628723
+Iteració 8 : q = 3, B(p) = 22, theta*= 0.211, z = 956.855838
+Iteració 9 : q = 6, B(p) = 21, theta*= 0.126, z = 832.472471
+Iteració 10 : q = 7, B(p) = 6, theta*= 0.235, z = 809.432208
+Iteració 11 : q = 2, B(p) = 23, theta*= 0.123, z = 699.439569
+Iteració 12 : q = 9, B(p) = 26, theta*= 0.415, z = 685.925138
+Iteració 13 : q = 8, B(p) = 3, theta*= 0.704, z = 571.463404
+Iteració 14 : q = 10, B(p) = 29, theta*= 0.589, z = 544.584700
+Iteració 15 : q = 6, B(p) = 1, theta*= 0.162, z = 409.534178
+Iteració 16 : q = 11, B(p) = 24, theta*= 1.376, z = 319.176272
+Iteració 17 : z = 0.000000
+Fase II
+Iteració 17 : q = 3, B(p) = 2, theta*= 1.211, z = -94.529683
+Iteració 18 : q = 13, B(p) = 4, theta*= 1.372, z = -108.045240
+Iteració 19 : q = 16, B(p) = 3, theta*= 226.786, z = -195.602776
+Iteració 20 : q = 12, B(p) = 9, theta*= 0.764, z = -214.931530
+Iteració 21 : q = 18, B(p) = 7, theta*= 297.991, z = -217.181210
+Iteració 22 : q = 3, B(p) = 8, theta*= 0.984, z = -425.669900
+Iteració 23 : q = 2, B(p) = 0, theta*= 2.705, z = -502.317123
+Iteració 24 : q = 17, B(p) = 5, theta*= 95.125, z = -510.869736
+Iteració 25 : q = 0, B(p) = 12, theta*= 0.673, z = -584.869114
+Iteració 26 : q = 19, B(p) = 0, theta*= 104.269, z = -685.153525
+Iteració 27 : q = 5, B(p) = 3, theta*= 0.396, z = -764.362443
+Iteració 28 : z = -795.364355
+Solució òptima trobada, iteració 28, z = -795.364355
+Fi simplex primal
+
+Solució òptima:
+vb = 18 19 6 17 12 7 20 14 3 11
+xb = 329.75 1078.07 0.40 199.75 4.55 4.61 208.04 0.13 3.12 1.51
+z = -795.3644, z* = -795.3644
+r = 68.57 102.34 76.13 84.67 151.36 110.67 52.89 119.55 1.04 0.15
+
+Problema 2:
+Inici simplex primal amb regla de Bland
+Fase I
+Iteració 1 : q = 0, B(p) = 22, theta*= 3.520, z = 2667.000000
+Iteració 2 : q = 1, B(p) = 20, theta*= 0.225, z = 2659.960000
+Iteració 3 : q = 2, B(p) = 1, theta*= 0.280, z = 2568.639768
+Iteració 4 : q = 3, B(p) = 26, theta*= 0.124, z = 2545.299035
+Iteració 5 : q = 5, B(p) = 23, theta*= 0.607, z = 2434.136310
+Iteració 6 : q = 1, B(p) = 2, theta*= 1.979, z = 1539.450823
+Iteració 7 : q = 4, B(p) = 25, theta*= 0.767, z = 1162.137135
+Iteració 8 : q = 2, B(p) = 1, theta*= 0.750, z = 959.666158
+Iteració 9 : q = 7, B(p) = 27, theta*= 0.603, z = 915.906423
+Iteració 10 : q = 9, B(p) = 3, theta*= 2.554, z = 818.501721
+Iteració 11 : q = 8, B(p) = 2, theta*= 0.096, z = 551.270836
+Iteració 12 : q = 6, B(p) = 21, theta*= 0.051, z = 531.239449
+Iteració 13 : q = 11, B(p) = 6, theta*= 0.069, z = 527.246573
+Iteració 14 : q = 1, B(p) = 8, theta*= 0.095, z = 512.239146
+Iteració 15 : q = 2, B(p) = 1, theta*= 0.037, z = 497.251936
+Iteració 16 : q = 3, B(p) = 28, theta*= 0.302, z = 496.028104
+Iteració 17 : q = 6, B(p) = 3, theta*= 1.714, z = 383.534229
+Iteració 18 : q = 8, B(p) = 24, theta*= 0.074, z = 120.756908
+Iteració 19 : q = 1, B(p) = 5, theta*= 0.153, z = 89.895115
+Iteració 20 : q = 12, B(p) = 29, theta*= 0.550, z = 87.913498
+Iteració 21 : z = 0.000000
+Fase II
+Iteració 21 : q = 3, B(p) = 4, theta*= 1.130, z = -161.833464
+Iteració 22 : q = 5, B(p) = 11, theta*= 0.780, z = -239.027882
+Iteració 23 : q = 10, B(p) = 9, theta*= 0.276, z = -241.761990
+Iteració 24 : q = 16, B(p) = 1, theta*= 168.123, z = -241.931031
+Iteració 25 : q = 9, B(p) = 0, theta*= 0.019, z = -306.907218
+Iteració 26 : q = 1, B(p) = 3, theta*= 0.322, z = -309.127858
+Iteració 27 : q = 18, B(p) = 10, theta*= 113.148, z = -334.742834
+Iteració 28 : z = -374.343835
+Solució òptima trobada, iteració 28, z = -374.343835
+Fi simplex primal
+
+Solució òptima:
+vb = 3 6 10 17 9 2 19 8 7 13
+xb = 1.02 1.55 0.41 354.34 3.27 0.41 113.15 0.85 3.10 2.04
+z = -374.3438
+r = 61.06 40.10 45.87 44.51 33.53 37.64 0.56 0.43 0.55 0.08
+
+Problema 3:
+Inici simplex primal amb regla de Bland
+Fase I
+Iteració 1 : q = 0, B(p) = 27, theta*= 0.144, z = 1127.000000
+Iteració 2 : q = 1, B(p) = 23, theta*= 0.021, z = 1101.000000
+Iteració 3 : q = 3, B(p) = 0, theta*= 0.161, z = 1092.011194
+Iteració 4 : q = 4, B(p) = 3, theta*= 0.139, z = 1074.300621
+Iteració 5 : q = 7, B(p) = 28, theta*= 0.188, z = 1027.371375
+Iteració 6 : q = 2, B(p) = 20, theta*= 0.007, z = 923.904403
+Iteració 7 : q = 9, B(p) = 4, theta*= 0.004, z = 916.628127
+Iteració 8 : q = 10, B(p) = 9, theta*= 0.003, z = 916.563307
+Iteració 9 : q = 14, B(p) = 24, theta*= 57.140, z = 916.385290
+Iteració 10 : q = 9, B(p) = 10, theta*= 0.004, z = 859.245359
+Iteració 11 : q = 13, B(p) = 9, theta*= 0.010, z = 858.949787
+Iteració 12 : q = 19, B(p) = 29, theta*= 9.299, z = 858.469348
+Iteració 13 : q = 23, B(p) = 2, theta*= 8.987, z = 849.170151
+Iteració 14 : q = 10, B(p) = 1, theta*= 0.186, z = 837.594883
+Iteració 15 : q = 18, B(p) = 7, theta*= 7.132, z = 835.523801
+Iteració 16 : z = 799.925490
+ El problema original no tiene solución factible
+
+ 
+Problema 4:
+Inici simplex primal amb regla de Bland
+Fase I
+Iteració 1 : q = 0, B(p) = 25, theta*= 6.000, z = 6932.000000
+Iteració 2 : q = 1, B(p) = 32, theta*= 3.963, z = 4454.000000
+Iteració 3 : q = 2, B(p) = 33, theta*= 2.130, z = 3379.563507
+Iteració 4 : q = 3, B(p) = 28, theta*= 5.669, z = 2609.724722
+Iteració 5 : q = 4, B(p) = 24, theta*= 0.812, z = 1149.578501
+Iteració 6 : q = 5, B(p) = 27, theta*= 3.986, z = 791.279917
+Iteració 7 : q = 6, B(p) = 29, theta*= 1.141, z = 695.439816
+Iteració 8 : q = 7, B(p) = 30, theta*= 0.755, z = 467.462311
+Iteració 9 : q = 10, B(p) = 0, theta*= 0.260, z = 374.549436
+Iteració 10 : q = 9, B(p) = 7, theta*= 0.264, z = 345.618210
+Iteració 11 : q = 11, B(p) = 2, theta*= 0.449, z = 313.730414
+Iteració 12 : q = 0, B(p) = 31, theta*= 0.694, z = 185.610672
+Iteració 13 : q = 8, B(p) = 1, theta*= 1.294, z = 43.722210
+Iteració 14 : q = 12, B(p) = 26, theta*= 0.242, z = 26.245252
+Iteració 15 : z = -0.000000
+Fase II
+Iteració 15 : q = 1, B(p) = 8, theta*= 0.798, z = -718.544215
+Iteració 16 : q = 13, B(p) = 4, theta*= 2.216, z = -724.671039
+Iteració 17 : q = 14, B(p) = 10, theta*= 69.452, z = -731.361889
+Iteració 18 : q = 4, B(p) = 12, theta*= 0.046, z = -763.477234
+Iteració 19 : q = 2, B(p) = 5, theta*= 1.956, z = -766.709496
+Iteració 20 : q = 10, B(p) = 13, theta*= 0.250, z = -778.963186
+Iteració 21 : q = 15, B(p) = 2, theta*= 155.400, z = -781.011144
+Iteració 22 : q = 12, B(p) = 4, theta*= 0.042, z = -930.487434
+Iteració 23 : q = 16, B(p) = 1, theta*= 162.186, z = -934.266614
+Iteració 24 : q = 17, B(p) = 12, theta*= 47.818, z = -948.741407
+Iteració 25 : q = 19, B(p) = 16, theta*= 22.288, z = -980.385214
+Iteració 26 : q = 18, B(p) = 10, theta*= 177.136, z = -990.052337
+Iteració 27 : q = 20, B(p) = 18, theta*= 52.225, z = -1018.942866
+Iteració 28 : q = 5, B(p) = 6, theta*= 4.493, z = -1094.948748
+Iteració 29 : q = 12, B(p) = 11, theta*= 0.315, z = -1395.766001
+Iteració 30 : q = 18, B(p) = 12, theta*= 41.912, z = -1423.734722
+Iteració 31 : q = 21, B(p) = 18, theta*= 63.159, z = -1453.899418
+Iteració 32 : q = 2, B(p) = 3, theta*= 1.874, z = -1507.554448
+Iteració 33 : q = 16, B(p) = 5, theta*= 1026.298, z = -1622.626811
+Iteració 34 : q = 13, B(p) = 2, theta*= 3.059, z = -3013.441695
+Iteració 35 : q = 18, B(p) = 0, theta*= 531.743, z = -3683.512508
+Problema no acotado
+La Fase II no encontró solución óptima
